@@ -1,5 +1,6 @@
 {
   "name": "globetrotters",
+  "description": "A social media website for developers",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,6 +45,21 @@
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.7",
     "prettier": "^2.0.5"
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "eslint --fix"
+    ],
+    "*.+(json|css|md)": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

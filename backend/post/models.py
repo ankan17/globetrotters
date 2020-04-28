@@ -23,7 +23,9 @@ class Post(models.Model):
 
 class BlogPost(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.OneToOneField(
+        Post, related_name='post', on_delete=models.CASCADE
+    )
     created_timestamp = models.DateTimeField(auto_now_add=True)
     edited_timestamp = models.DateTimeField(auto_now=True)
     content = models.TextField()

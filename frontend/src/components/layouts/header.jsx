@@ -12,9 +12,10 @@ const useStyles = makeStyles((theme) => {
         margin: "0",
       },
     },
-    navBar: {
+    root: {
       backgroundColor: "transparent",
-      boxShadow: "none",
+      boxShadow:
+        "0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)",
     },
     brandName: {
       fontFamily: "Alata",
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => {
     },
     navbarButton: {
       color: "#08356b",
+      textTransform: "none",
     },
   };
 });
@@ -31,7 +33,7 @@ const useStyles = makeStyles((theme) => {
 const Header = () => {
   const classes = useStyles();
   return (
-    <AppBar className={classes.navBar} position="static">
+    <AppBar className={classes.root} position="static">
       <Toolbar className={classes.navBarContents}>
         <Typography className={classes.brandName} variant="h7">
           Globetrotters

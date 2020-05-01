@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { AppBar, Toolbar } from "@material-ui/core";
+import { AppBar, Toolbar, Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => {
       fontFamily: "Alata",
       fontSize: "24px",
       color: "#08356b",
+      flex: "1",
+    },
+    navbarButton: {
+      color: "#08356b",
     },
   };
 });
@@ -32,6 +36,8 @@ const Header = () => {
         <Typography className={classes.brandName} variant="h7">
           Globetrotters
         </Typography>
+        <Button className={classes.navbarButton}>Login</Button>
+        <Button className={classes.navbarButton}>Get Started</Button>
       </Toolbar>
     </AppBar>
   );

@@ -1,0 +1,43 @@
+import React from "react";
+import { Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => {
+  return {
+    homepage: {
+      padding: "10px",
+      paddingTop: "30px",
+    },
+    homepageParagraph: {
+      paddingRight: "40%",
+      [theme.breakpoints.down("sm")]: {
+        paddingRight: "0",
+      },
+    },
+  };
+});
+
+const Homepage = () => {
+  const classes = useStyles();
+  const heading = "Read, Travel and Share your Experience";
+  const subHeading =
+    "Read, We believe that travelling around the world shouldn’t be hard.";
+  const paragraph =
+    "Whether you choose to spend a few years or just a couple months traveling this beautiful planet, it’s important to see what’s out there for you. GlobeTrotters is a social media site for the wanderers.";
+
+  return (
+    <div className={classes.homepage}>
+      <Typography variant="h3" font="Adamina">
+        {heading}
+      </Typography>
+      <Typography paragraph variant="h5">
+        {subHeading}
+      </Typography>
+      <Typography className={classes.homepageParagraph} paragraph variant="body1">
+        {paragraph}
+      </Typography>
+    </div>
+  );
+};
+
+export default Homepage;

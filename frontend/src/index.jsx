@@ -1,12 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: ["Adamina", "Roboto", '"Helvetica Neue"', "Arial", "sans-serif"],
+  },
+});
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

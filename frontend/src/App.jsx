@@ -1,21 +1,28 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
-import Header from "./components/header";
-import Footer from "./components/footer";
-import Content from "./components/content";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Header, Footer, Content } from "./components/layouts";
+import { Homepage, Profile, Post } from "./components/pages";
 
 const App = () => (
-  <Grid container direction="column">
-    <Grid item>
+  <>
+    <Router>
       <Header />
-    </Grid>
-    <Grid item container style={{ minHeight: "calc(100vh - 128px)" }}>
-      <Content />
-    </Grid>
-    <Grid item>
+      <Content>
+        <Switch>
+          <Route path="/" exact>
+            <Homepage />
+          </Route>
+          <Route path="/user" exact>
+            <Profile />
+          </Route>
+          <Route path="/post" exact>
+            <Post />
+          </Route>
+        </Switch>
+      </Content>
       <Footer />
-    </Grid>
-  </Grid>
+    </Router>
+  </>
 );
 
 export default App;

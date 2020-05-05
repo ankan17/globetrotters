@@ -6,6 +6,10 @@ import PropTypes from "prop-types";
 const useStyles = makeStyles({
   content: {
     flex: 1,
+    // backgroundImage: 'url("/static/img/bg3.png")',
+    // backgroundPosition: "center",
+    // backgroundRepeat: "no-repeat",
+    // backgroundSize: "contain",
   },
 });
 

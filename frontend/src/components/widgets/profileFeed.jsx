@@ -7,16 +7,25 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  rowContainer: {
+    [theme.breakpoints.down("sm")]: {
+      display: "block",
+    },
+  },
   paper: {
     margin: "5px",
     textAlign: "center",
     color: theme.palette.text.secondary,
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      margin: "10px 0px 0px 0px",
+    },
   },
 }));
 
 const makeRow = (rowPosts, rowId, classes) => {
   return (
-    <Grid container>
+    <Grid container className={classes.rowContainer}>
       {rowPosts.map((post, index) => {
         return (
           <Grid className={classes.paper} item xs>
@@ -34,7 +43,7 @@ const ProfileFeed = () => {
   const postArrays = [];
 
   for (let i = 0; i < posts.length; i += 3) {
-    postArrays.push(posts.slice(i, i + 4));
+    postArrays.push(posts.slice(i, i + 3));
   }
 
   return (

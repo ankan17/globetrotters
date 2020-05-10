@@ -1,14 +1,15 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { GoogleLoginButton } from "../widgets";
 
 const useStyles = makeStyles((theme) => {
   return {
-    homepage: {
+    landingPage: {
       padding: "10px",
       paddingTop: "30px",
     },
-    homepageParagraph: {
+    landingPageParagraph: {
       paddingRight: "40%",
       [theme.breakpoints.down("sm")]: {
         paddingRight: "0",
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Homepage = () => {
+const LandingPage = () => {
   const classes = useStyles();
   const heading = "Read, Travel and Share your Experience";
   const subHeading =
@@ -26,18 +27,19 @@ const Homepage = () => {
     "Whether you choose to spend a few years or just a couple months traveling this beautiful planet, it’s important to see what’s out there for you. GlobeTrotters is a social media site for the wanderers.";
 
   return (
-    <div className={classes.homepage}>
+    <div className={classes.landingPage}>
       <Typography variant="h3" font="Adamina">
         {heading}
       </Typography>
       <Typography paragraph variant="h5">
         {subHeading}
       </Typography>
-      <Typography className={classes.homepageParagraph} paragraph variant="body1">
+      <Typography className={classes.landingPageParagraph} paragraph variant="body1">
         {paragraph}
       </Typography>
+      <GoogleLoginButton />
     </div>
   );
 };
 
-export default Homepage;
+export default LandingPage;

@@ -1,12 +1,8 @@
-const initState = {
-  loggedIn: false,
-};
+import { combineReducers } from "redux";
 
-const reducer = (state = initState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+import authReducer from "./authReducer";
+import secretReducer from "./secretReducer";
 
-export default reducer;
+const rootReducer = combineReducers({ auth: authReducer, secret: secretReducer });
+
+export default rootReducer;

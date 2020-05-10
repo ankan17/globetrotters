@@ -1,5 +1,6 @@
-import Homepage from "./homepage";
+import HomePage from "./homePage";
+import LandingPage from "./landingPage";
 import Profile from "./profile";
 import Post from "./post";
 
-export { Homepage, Profile, Post };
+export { HomePage, LandingPage, Profile, Post };

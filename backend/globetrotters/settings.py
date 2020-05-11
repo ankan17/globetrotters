@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 
     # Custom apps
     'post.apps.PostConfig',
+    'user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [

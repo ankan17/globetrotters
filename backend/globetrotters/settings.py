@@ -18,11 +18,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Custom apps
-    'post.apps.PostConfig',
-
     # Third-party apps,
     'rest_framework',
+    'oauth2_provider',
+    'social_django',
+    'rest_framework_social_oauth2',
+
+    # Custom apps
+    'post.apps.PostConfig',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +51,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # Social django context processors
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -90,7 +97,37 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework_social_oauth2.authentication.SocialAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissions'
     ]
 }
+
+AUTHENTICATION_BACKENDS = (
+    # Social oauth2 backend
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+
+    # Google Authentication backend
+    'social_core.backends.google.GoogleOAuth2',
+
+    # Facebook Authentication backend
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    # This is the default Authentication backend
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# Rest Framework OAuth2 Credentials
+CLIENT_ID = config('CLIENT_ID')
+CLIENT_SECRET = config('CLIENT_SECRET')
+
+# Google App Credentials
+GOOGLE_OAUTH2_CLIENT_ID = config('GOOGLE_OAUTH2_CLIENT_ID')
+GOOGLE_OAUTH2_CLIENT_SECRET = config('GOOGLE_OAUTH2_CLIENT_SECRET')
+
+# Facebook App Credentials
+FACEBOOK_APP_ID = config('FACEBOOK_APP_ID')
+FACEBOOK_APP_SECRET = config('FACEBOOK_APP_SECRET')

@@ -9,7 +9,6 @@ const GoogleLoginButton = (props) => {
   return (
     <GoogleLogin
       clientId={GOOGLE_CLIENT_ID}
-      buttonText="Login with Google"
       onSuccess={(response) => props.convertGoogleToken(response.tc.access_token)}
       onFailure={(err) => console.error(err)}
     />

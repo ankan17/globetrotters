@@ -1,4 +1,5 @@
 import React from "react";
+import Divider from "@material-ui/core/Divider";
 import { ProfileCard, ProfileFeed } from "../widgets";
 
 const Profile = () => {
@@ -16,7 +17,7 @@ const Profile = () => {
   return (
     <div>
       <ProfileCard userInfo={userInfo} />
-      <br />
+      <Divider />
       <ProfileFeed />
     </div>
   );

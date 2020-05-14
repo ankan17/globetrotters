@@ -37,7 +37,6 @@ const LandingPage = () => {
       <Typography className={classes.landingPageParagraph} paragraph variant="body1">
         {paragraph}
       </Typography>
-      <GoogleLoginButton />
     </div>
   );
 };

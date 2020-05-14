@@ -22,7 +22,6 @@ const HomePage = () => {
       <Typography variant="h5" font="Adamina">
         You are Logged in.
       </Typography>
-      <GoogleLogoutButton />
     </div>
   );
 };

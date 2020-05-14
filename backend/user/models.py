@@ -14,10 +14,10 @@ GENDER_CHOICES = [
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic = models.FileField(default=None, null=True, blank=True)
-    first_name = models.CharField(max_length=50, null=True, blank=True)
-    middle_name = models.CharField(max_length=50, null=True, blank=True)
-    last_name = models.CharField(max_length=50, null=True, blank=True)
+    photo = models.ImageField(
+        default=None, null=True, upload_to='profile_pics'
+    )
+    name = models.CharField(max_length=50, null=True)
     bio = models.TextField(max_length=500, blank=True, null=True)
     gender = models.CharField(
         max_length=2, choices=GENDER_CHOICES, null=True, blank=True

@@ -18,11 +18,11 @@ const Content = (props) => {
   const { children } = props;
   return (
     <Grid container className={classes.content}>
-      <Grid item xs={0} sm={2} lg={3} />
+      <Grid item sm={2} lg={3} />
       <Grid item xs={12} sm={8} lg={6}>
         {children}
       </Grid>
-      <Grid item xs={0} sm={2} lg={3} />
+      <Grid item sm={2} lg={3} />
     </Grid>
   );
 };

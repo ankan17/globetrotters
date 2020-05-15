@@ -18,24 +18,7 @@ const EditProfile = () => {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField
-        className={classes.textField}
-        type="text"
-        id="first-name"
-        label="First-name"
-      />
-      <TextField
-        className={classes.textField}
-        type="text"
-        id="middle-name"
-        label="Middle-name"
-      />
-      <TextField
-        className={classes.textField}
-        type="text"
-        id="last-name"
-        label="Last-name"
-      />
+      <TextField className={classes.textField} type="text" id="name" label="Name" />
       <TextField className={classes.textField} type="text" id="bio" label="Bio" />
     </form>
   );

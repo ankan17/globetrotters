@@ -57,7 +57,7 @@ const ProfileCard = (props) => {
   return (
     <Card className={classes.root}>
       <CardContent className={classes.image}>
-        <Avatar className={classes.avatar} alt="User DP" src={userInfo.image} />
+        <Avatar className={classes.avatar} alt="User DP" src={userInfo.photo} />
       </CardContent>
       <CardContent className={classes.content}>
         <Typography variant="h5" component="h2">

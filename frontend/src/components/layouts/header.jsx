@@ -42,7 +42,7 @@ const Header = (props) => {
   return (
     <AppBar className={classes.root} position="static">
       <Toolbar className={classes.navBarContents}>
-        <Typography className={classes.brandName} variant="h7">
+        <Typography className={classes.brandName} variant="h5">
           Globetrotters
         </Typography>
 

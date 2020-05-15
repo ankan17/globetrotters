@@ -39,7 +39,7 @@ const Settings = () => {
           aria-label="disabled tabs example"
         >
           <Tab label="Edit Profile" />
-          <Tab label="Preferences" disabled="disabled" />
+          <Tab label="Preferences"  />
         </Tabs>
         <SwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
@@ -50,7 +50,7 @@ const Settings = () => {
             <EditProfile />
           </div>
           <div value={value} index={1} dir={theme.direction}>
-            Item Two
+            Preferences
           </div>
         </SwipeableViews>
       </CardContent>

@@ -1,18 +1,29 @@
 import React from "react";
 import Divider from "@material-ui/core/Divider";
+import { connect } from "react-redux";
 import { ProfileCard, ProfileFeed } from "../widgets";
 
-const Profile = () => {
-  const userInfo = {
-    name: "Tanmoy Ghosh",
-    bio: '"People don\'t take trips, trips take people."',
+const Profile = (props) => {
+  const { user } = props;
+
+  let userInfo = {
+    name: "",
+    bio: "",
     counts: {
       followers: "129",
       following: "203",
       posts: "12",
     },
-    image: "/static/img/profile_user.jpg",
+    photo: "",
   };
+
+  if (user.loggedIn) {
+
+    userInfo = {
+      ...userInfo,
+      ...user,
+    };
+  }
 
   return (
     <div>
@@ -23,4 +34,7 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+export default connect(mapStateToProps)(Profile);

@@ -17,6 +17,8 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "rules": {},
+  "rules": {
+    "no-console": "off"
+  },
   "ignorePatterns": ["src/serviceWorker.js", "node_modules/"]
 }

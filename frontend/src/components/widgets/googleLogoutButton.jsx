@@ -3,6 +3,7 @@ import { GoogleLogout } from "react-google-login";
 import { connect } from "react-redux";
 import { GOOGLE_CLIENT_ID } from "../../config";
 import { handleGoogleLogout } from "../../actions/authActions";
+import { removeUserDetails } from "../../actions/userActions";
 
 const GoogleLogoutButton = (props) => {
   return (
@@ -13,14 +14,18 @@ const GoogleLogoutButton = (props) => {
           {props.children}
         </div>
       )}
-      onLogoutSuccess={(token) => props.handleGoogleLogout(token)}
+      onLogoutSuccess={() => {
+        props.handleGoogleLogout();
+        props.removeUserDetails();
+      }}
       onLogoutFailure={(err) => console.log(err)}
     />
   );
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  handleGoogleLogout: (token) => dispatch(handleGoogleLogout(token)),
+  handleGoogleLogout: () => dispatch(handleGoogleLogout()),
+  removeUserDetails: () => dispatch(removeUserDetails()),
 });
 
 export default connect(null, mapDispatchToProps)(GoogleLogoutButton);

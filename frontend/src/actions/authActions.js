@@ -4,6 +4,7 @@ import {
   HANDLE_GOOGLE_LOGOUT,
 } from "./constNames";
 
+import { fetchUserDetails } from "./userActions";
 import { URL, DJANGO_CLIENT_ID, DJANGO_CLIENT_SECRET } from "../config";
 
 export const getAuthState = () => {
@@ -58,7 +59,10 @@ export const convertGoogleToken = (accessToken) => {
   return (dispatch) => {
     request
       .then((response) => response.json())
-      .then((json) => dispatch(convertGoogleTokenSuccess(json)))
+      .then((json) => {
+        dispatch(convertGoogleTokenSuccess(json));
+        dispatch(fetchUserDetails(json.access_token));
+      })
       .catch((err) => {
         console.log(err);
       });

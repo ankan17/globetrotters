@@ -18,10 +18,9 @@ const Profile = (props) => {
   };
 
   if (user.loggedIn) {
-
     userInfo = {
       ...userInfo,
-      ...user,
+      ...user.user,
     };
   }
 

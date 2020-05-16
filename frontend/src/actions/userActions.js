@@ -1,50 +1,42 @@
 import {
-  FETCH_USER_DETAILS,
-  UPDATE_USER_DETAILS,
+  FETCH_USER_DETAILS_SUCCESS,
+  FETCH_USER_DETAILS_FAILURE,
   REMOVE_USER_DETAILS,
 } from "./constNames";
 
 import { URL } from "../config";
 
-const fetchUserDetailsSucess = (jsonData) => {
+const fetchUserDetailsSuccess = (jsonData) => {
   return {
-    type: FETCH_USER_DETAILS,
-    payload: {
-      loggedIn: true,
-      ...jsonData,
-    },
+    type: FETCH_USER_DETAILS_SUCCESS,
+    payload: jsonData,
   };
 };
 
-const fetchUserDetailsFail = () => {
+const fetchUserDetailsFailure = () => {
   return {
-    type: FETCH_USER_DETAILS,
-    payload: {
-      loggedIn: false,
-    },
+    type: FETCH_USER_DETAILS_FAILURE,
   };
 };
 
-const fetchUserDetails = (accessToken) => {
-  const request = new Request(`${URL}/profile/view`, {
-    method: "GET",
-    mode: "cors",
+export const fetchUserDetails = (accessToken) => (dispatch) => {
+  fetch(`${URL}/profile/view`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
-  });
-
-  return (dispatch) => {
-    fetch(request)
-      .then((response) => response.json())
-      .then((jsonData) => {
-        dispatch(fetchUserDetailsSucess(jsonData));
-      })
-      .catch((err) => {
-        console.log(err);
-        dispatch(fetchUserDetailsFail());
-      });
-  };
+  })
+    .then((response) => response.json())
+    .then((jsonData) => {
+      dispatch(fetchUserDetailsSuccess(jsonData));
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch(fetchUserDetailsFailure());
+    });
 };
 
-export default fetchUserDetails;
+export const removeUserDetails = () => {
+  return {
+    type: REMOVE_USER_DETAILS,
+  };
+};

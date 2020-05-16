@@ -18,7 +18,8 @@
   },
   "plugins": ["react"],
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+    "react/destructuring-assignment": "off"
   },
   "ignorePatterns": ["src/serviceWorker.js", "node_modules/"]
 }

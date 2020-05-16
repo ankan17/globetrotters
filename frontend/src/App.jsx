@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import { Header, Footer, Content } from "./components/layouts";
 import { LandingPage, HomePage, Profile, Post, Settings } from "./components/pages";
@@ -15,7 +16,6 @@ class App extends React.Component {
 
   componentDidUpdate() {
     const { auth, user } = this.props;
-
     if (auth.authenticated && !user.loggedIn) {
       this.props.fetchUserDetails(auth.token);
     }
@@ -46,6 +46,19 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  getAuthState: PropTypes.func.isRequired,
+  fetchUserDetails: PropTypes.func.isRequired,
+  auth: PropTypes.shape({
+    authenticated: PropTypes.bool.isRequired,
+    token: PropTypes.string.isRequired,
+  }).isRequired,
+  user: PropTypes.shape({
+    loggedIn: PropTypes.bool.isRequired,
+    user: PropTypes.object.isRequired,
+  }).isRequired,
+};
 
 const mapStateToProps = (state) => ({ auth: state.auth, user: state.user });
 const mapDispatchToProps = (dispatch) => ({

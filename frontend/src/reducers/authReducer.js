@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   authenticated: undefined,
+  token: null,
 };
 
 const googleAuthReducer = (state = initialState, action) => {
